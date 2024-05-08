@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from spn.algorithms.MPE import mpe
+import math
 
 np.random.seed(42)
 
@@ -9,6 +10,44 @@ def generate_data(mu_x, std_x, mu_y, std_y, num_points, label):
     X = np.random.normal(mu_x, std_x, num_points)
     Y = np.random.normal(mu_y, std_y, num_points)
     return np.column_stack((X, Y, np.full(num_points, label)))
+
+
+def nested_shape(t, num_points):
+    if t == 0:
+        R = np.random.normal(1.25, 0.2, num_points)
+        T = np.random.normal(math.pi/2, math.pi/4, num_points)
+        return np.column_stack((0.5+R*np.cos(T), R*np.sin(T)-0.7, np.full(num_points, t)))
+    if t == 1:
+        R = np.random.normal(1.25, 0.2, num_points)
+        T = np.random.normal(-math.pi/2, math.pi/4, num_points)
+        return np.column_stack((-0.5+R*np.cos(T), R*np.sin(T), np.full(num_points, t)))
+    # if t == 2:
+    #     R = np.random.uniform(1.5, 2.5, num_points)
+    #     T = np.random.uniform(-math.pi/2, math.pi/2, num_points)
+    #     return np.column_stack((R*np.cos(T), R*np.sin(T), np.full(num_points, t)))
+
+def circles(t, num_points):
+    if t == 0:
+        R = np.random.uniform(1, 2, num_points)
+        T = np.random.uniform(0, 2*math.pi, num_points)
+        return np.column_stack((R*np.cos(T), R*np.sin(T), np.full(num_points, t)))
+    if t == 1:
+        R = np.random.uniform(3, 4, num_points)
+        T = np.random.uniform(0, 2*math.pi, num_points)
+        return np.column_stack((R*np.cos(T), R*np.sin(T), np.full(num_points, t)))
+    
+def disconnected_clusters(t, num_points):
+    if t == 0:
+        X = np.random.normal(0, 1, num_points)
+        Y = np.random.normal(0, 1, num_points)
+        X += 8*np.random.randint(2, size=num_points)
+        return np.column_stack((X, Y, np.full(num_points, t)))
+    if t == 1:
+        X = np.random.normal(4, 1, num_points)
+        Y = np.random.normal(0, 1, num_points)
+        X += 8*np.random.randint(2, size=num_points)
+        return np.column_stack((X, Y, np.full(num_points, t)))
+    
 
 
 if __name__ == "__main__":
@@ -28,32 +67,26 @@ if __name__ == "__main__":
     # ]
     # colors = ["Red", "Blue", "Green", "Orange", "Purple"]
 
-    clusters = [
-        {"mean_x": -1.25, "std_x": 0.65, "mean_y": 0, "std_y": 1.1, "label": 0},  # Cluster 0
-        {"mean_x": 1.25, "std_x": 0.65, "mean_y": 0, "std_y": 1.1, "label": 1},  # Cluster 1
-    ]
+    # clusters = [
+    #     {"mean_x": -1.25, "std_x": 0.65, "mean_y": 0, "std_y": 1.1, "label": 0},  # Cluster 0
+    #     {"mean_x": 1.25, "std_x": 0.65, "mean_y": 0, "std_y": 1.1, "label": 1},  # Cluster 1
+    # ]
 
     colors = ["Red", "Blue"]
-    num_clusters = len(clusters)
+    types = [0,1]
+    num_clusters = len(types)
 
     data = np.array(
         [
-            generate_data(
-                cluster["mean_x"],
-                cluster["std_x"],
-                cluster["mean_y"],
-                cluster["std_y"],
-                num_points,
-                clusters.index(cluster),
-            )
-            for cluster in clusters
+            disconnected_clusters(t, num_points)
+            for t in types
         ]
     )
     train_data = data.reshape(num_points * num_clusters, 3)
 
-    for cluster, color in zip(clusters, colors):
-        points = data[clusters.index(cluster)]
-        plt.scatter(points[:, 0], points[:, 1], color=color, label=f"Cluster {cluster['label']}", s=2)
+    for cluster, color in zip(types, colors):
+        points = data[cluster]
+        plt.scatter(points[:, 0], points[:, 1], color=color, label=f"Cluster {cluster}", s=2)
 
     # plt.scatter(-1.25, 0, color='Red', edgecolors='Black', s=50, linewidth=1.5)
     # plt.scatter(1.25, 0, color='Blue', edgecolors='Black', s=50, linewidth=1.5)
@@ -95,7 +128,7 @@ if __name__ == "__main__":
     # ).reshape(num_clusters * num_test_points, 3)
 
     # Grid
-    x_range = np.arange(-4, 4, 0.1)
+    x_range = np.arange(-4, 15, 0.25)
     y_range = np.arange(-4, 4, 0.1)
     x_grid, y_grid = np.meshgrid(x_range, y_range)
     points = np.stack([x_grid.flatten(), y_grid.flatten()], axis=-1)
