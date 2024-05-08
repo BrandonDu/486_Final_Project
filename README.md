@@ -200,4 +200,4 @@ print(get_structure_stats(spn))
 
 
 ## Acknowledgments
-Much of this code was refactored from SPFlow, which can be found at https://github.com/SPFlow/SPFlow. Unfortunately, the code from the provided link has bugs and errors that we had to fix, but most of the ideas for the SPN are inspired from there. 
+Much of this code was refactored from SPFlow, which can be found at https://github.com/SPFlow/SPFlow. Unfortunately, the code from the provided link has bugs and errors that we had to fix, but most of the ideas for the implementation of the SPN are inspired from there. 
