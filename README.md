@@ -60,13 +60,12 @@ We can now visualize the SPN using:
 ```python
 from spn.io.Graphics import plot_spn
 
-plot_spn(spn, 'spn.png')
+plot_spn(spn, 'basicspn.png')
 ```
 
 ![](https://github.com/BrandonDu/486_Final_Project/blob/main/src/spn.png)
 
-Marginalizing an SPN means summing out all the other non-relevant variables.
-So, if we want to marginalize the above SPN and sum out all other variables leaving only variables 1 and 2, we can do:
+We can also marginalize the above SPN over V0 and only leaving V1 and V2 by doing:
 
 ```python
 from spn.algorithms.Marginalization import marginalize
