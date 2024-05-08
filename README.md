@@ -63,7 +63,7 @@ from spn.io.Graphics import plot_spn
 plot_spn(spn, 'basicspn.png')
 ```
 
-![basicspn.png](https://github.com/SPFlow/SPFlow/blob/master/Documentation/basicspn.png)
+![](https://github.com/BrandonDu/486_Final_Project/blob/main/src/basicspn.png)
 
 Marginalizing an SPN means summing out all the other non-relevant variables.
 So, if we want to marginalize the above SPN and sum out all other variables leaving only variables 1 and 2, we can do:
