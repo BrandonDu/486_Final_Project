@@ -199,45 +199,5 @@ print(get_structure_stats(spn))
 ```
 
 
-
-## Citation
-If you find SPFlow useful please cite us in your work:
-```
-@misc{Molina2019SPFlow,
-  Author = {Alejandro Molina and Antonio Vergari and Karl Stelzner and Robert Peharz and Pranav Subramani and Nicola Di Mauro and Pascal Poupart and Kristian Kersting},
-  Title = {SPFlow: An Easy and Extensible Library for Deep Probabilistic Learning using Sum-Product Networks},
-  Year = {2019},
-  Eprint = {arXiv:1901.03704},
-}
-```
-
-## Authors
-
-* **Alejandro Molina** - *TU Darmstadt*
-* **Antonio Vergari** - *Max-Planck-Institute*
-* **Karl Stelzner** - *TU Darmstadt*
-* **Robert Peharz** - *University of Cambridge*
-* **Nicola Di Mauro** - *University of Bari Aldo Moro*
-* **Kristian Kersting** - *TU Darmstadt*
-
-See also the list of [contributors](https://github.com/alejandromolinaml/SPFlow/contributors) who participated in this project.
-
-## Contributors
-
-* **Moritz Kulessa** - *TU Darmstadt*
-* **Claas Voelcker** - *TU Darmstadt*
-* **Simon Roesler** - *Karlsruhe Institute of Technology*
-* **Steven Lang** - *TU Darmstadt*
-* **Alexander L. Hayes** - *Indiana University, Bloomington*
-
-## License
-
-This project is licensed under the Apache License, Version 2.0 - see the [LICENSE.md](LICENSE.md) file for details
-
-
-
 ## Acknowledgments
-<img src="https://github.com/SPFlow/SPFlow/blob/master/Documentation/acknowledgements/bmbf.png" height="100"/><img src="https://github.com/SPFlow/SPFlow/blob/master/Documentation/acknowledgements/dfg.jpg"  height="100"/><img src="https://github.com/SPFlow/SPFlow/blob/master/Documentation/acknowledgements/euc.png"  height="100"/>
-* Parts of SPFlow as well as its motivating research have been supported by the Germany Science Foundation (DFG) - AIPHES, GRK 1994, and CAML, KE 1686/3-1 as part of SPP 1999- and the Federal Ministry of Education and Research (BMBF) - InDaS, 01IS17063B.
-
-* This project received funding from the European Union's Horizon 2020 research and innovation programme under the Marie Sklodowska-Curie Grant Agreement No. 797223 (HYBSPN).
+Much of this code was refactored from SPFlow, which can be found at https://github.com/SPFlow/SPFlow. Unfortunately, the code from the provided link has bugs and errors that we had to fix, but most of the ideas for the SPN are inspired from there. 
