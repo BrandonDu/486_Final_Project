@@ -91,6 +91,7 @@ And the output is:
 ```python
 (0.6699999999999999*((Categorical(V1|p=[0.9, 0.1]) * Categorical(V2|p=[0.4, 0.6]))) + 0.264*((Categorical(V1|p=[0.55, 0.45]) * Categorical(V2|p=[0.4, 0.6]))) + 0.066*((Categorical(V1|p=[0.5, 0.5]) * Categorical(V2|p=[0.6, 0.4]))))
 ```
+## Classification
 
 We consider SPN for classification, by learning an SPN from data and then comparing the probabilities for the given classes. In particular, we perform classification via approximate most probable explanation (MPE). 
 
@@ -174,7 +175,7 @@ We plot and color the results
 
 As we see, all points are classified correctly. 
 
-Now for a grid, we similar find that the SPN performs extremely well.
+Now for a grid, we similar find that the SPN performs extremely well, finding well-defined clusters.
 ![](https://github.com/BrandonDu/486_Final_Project/blob/main/src/Grid%20Classification%20Example%201.png)
 
 ### Utilities
