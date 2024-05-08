@@ -75,21 +75,21 @@ spn_marg = marginalize(spn, [1,2])
 Here, we marginalize all the variables not in [1,2], and create a *NEW* structure that knows nothing about the previous one
 nor about the variable 0.
 
-We can use this new spn to do all the operations we are interested in. That means, we can also plot it!
+We can use this new spn to do all the operations we are interested in.
 ```python
 plot_spn(spn_marg, 'marginalspn.png')
 ```
-![basicspn.png](https://github.com/SPFlow/SPFlow/blob/master/Documentation/marginalspn.png)
+![](https://github.com/BrandonDu/486_Final_Project/blob/main/src/marginalspn.png)
 
 We can also dump the SPN as text:
 ```python
 from spn.io.Text import spn_to_str_equation
-txt = spn_to_str_equation(spn_marg)
-print(txt)
+spn_txt = spn_to_str_equation(spn_marg)
+print(spn_txt)
 ```
 And the output is:
 ```python
-(0.6*((Categorical(V1|p=[0.3, 0.7]) * Categorical(V2|p=[0.4, 0.6]))) + 0.12000000000000002*((Categorical(V1|p=[0.3, 0.7]) * Categorical(V2|p=[0.4, 0.6]))) + 0.27999999999999997*((Categorical(V1|p=[0.5, 0.5]) * Categorical(V2|p=[0.6, 0.4]))))
+(0.6699999999999999*((Categorical(V1|p=[0.9, 0.1]) * Categorical(V2|p=[0.4, 0.6]))) + 0.264*((Categorical(V1|p=[0.55, 0.45]) * Categorical(V2|p=[0.4, 0.6]))) + 0.066*((Categorical(V1|p=[0.5, 0.5]) * Categorical(V2|p=[0.6, 0.4]))))
 ```
 
 We consider SPN for classification, by learning an SPN from data and then comparing the probabilities for the given classes. In particular, we perform classification via approximate most probable explanation (MPE). 
