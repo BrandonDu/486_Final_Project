@@ -63,7 +63,7 @@ from spn.io.Graphics import plot_spn
 plot_spn(spn, 'basicspn.png')
 ```
 
-![](https://github.com/BrandonDu/486_Final_Project/blob/main/src/spn.png)
+![](https://github.com/BrandonDu/486_Final_Project/blob/main/src/basicspn.png)
 
 We can also marginalize the above SPN over V0 and only leaving V1 and V2 by doing:
 
