@@ -180,9 +180,9 @@ Now for a grid, we similar find that the SPN performs extremely well, finding we
 
 ### Utilities
 
-Finally, we have some basic utilities for working with SPNs:
+Finally, we have basic utilities.
 
-We can make sure that the SPN that we are using is valid, that is, it is consistent and complete.
+We may confirm that the SPN is valid (consistent and complete, as discussed in our paper):
 ```python
 from spn.algorithms.Validity import is_valid
 print(is_valid(spn))
@@ -192,7 +192,7 @@ The output indicates that the SPN is valid and there are no debugging error mess
 (True, None)
 ```
 
-To compute basic statistics on the structure of the SPN:
+For basic statistics on the structure of the SPN, we can use
 ```python
 from spn.algorithms.Statistics import get_structure_stats
 print(get_structure_stats(spn))
